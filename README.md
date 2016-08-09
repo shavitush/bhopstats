@@ -3,7 +3,7 @@
 # Bunnyhop Statistics
 Bunnyhop Statistics is an API made in SourcePawn for developers that provides bhop related statistics.  
 Made with hope it will be used for the creation of high quality, open sourced anti-cheats or bhop server utilities for Source Engine games.  
-**Note**: Not tested with autobhop plugins *at all*.
+**Note**: Not tested with autobhop plugins *at all*, use at your own risk!
 
 Requirements:
 --
