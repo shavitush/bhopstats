@@ -45,7 +45,7 @@ public Plugin myinfo =
 	name = "Bunnyhop Statistics API",
 	author = "shavit",
 	description = "A SourceMod API that provides bhop related statistics for use in other plugins.",
-	version = BHOPAPI_VERSION,
+	version = BHOPSTATS_VERSION,
 	url = "https://github.com/shavitush/bhop_api"
 }
 
@@ -66,6 +66,8 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart()
 {
+	CreateConVar("bhopstats_version", BHOPSTATS_VERSION, "Plugin version.", FCVAR_NOTIFY|FCVAR_DONTRECORD);
+
 	gH_Forwards_OnJumpPressed = CreateGlobalForward("Bunnyhop_OnJumpPressed", ET_Event, Param_Cell, Param_Cell);
 	gH_Forwards_OnJumpReleased = CreateGlobalForward("Bunnyhop_OnJumpReleased", ET_Event, Param_Cell, Param_Cell);
 	gH_Forwards_OnTouchGround = CreateGlobalForward("Bunnyhop_OnTouchGround", ET_Event, Param_Cell);
