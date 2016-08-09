@@ -1,4 +1,4 @@
-[![Build status](https://travis-ci.org/shavitush/bhop_api.svg?branch=master)](https://travis-ci.org/shavitush/bhopstats)
+[![Build status](https://api.travis-ci.org/shavitush/bhopstats.svg?branch=master)](https://travis-ci.org/shavitush/bhopstats)
 
 # Bunnyhop Statistics
 Bunnyhop Statistics is an API made in SourcePawn for developers that provides bhop related statistics.  
