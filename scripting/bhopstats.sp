@@ -46,7 +46,7 @@ public Plugin myinfo =
 	author = "shavit",
 	description = "A SourceMod API that provides bhop related statistics for use in other plugins.",
 	version = BHOPSTATS_VERSION,
-	url = "https://github.com/shavitush/bhop_api"
+	url = "https://github.com/shavitush/bhopstats"
 }
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
@@ -74,7 +74,7 @@ public void OnPluginStart()
 	gH_Forwards_OnLeaveGround = CreateGlobalForward("Bunnyhop_OnLeaveGround", ET_Event, Param_Cell, Param_Cell, Param_Cell);
 }
 
-public void OnPlayerPutInServer(int client)
+public void OnClientPutInServer(int client)
 {
 	gB_OnGround[client] = false;
 	gB_PlayerTouchingGround[client] = false;

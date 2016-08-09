@@ -23,7 +23,7 @@
 #endif
 #define _bhopstats_included
 
-#define BHOPSTATS_VERSION "1.0.0"
+#define BHOPSTATS_VERSION "1.1.0"
 
 /**
  * Called when the jump key is pressed.
