@@ -1,7 +1,8 @@
 Plugin(source='scripting/bhopstats.sp')
+Plugin(source='scripting/extras/pad.sp')
 
 Package(name='bhopstats',
-        plugins=['bhopstats'],
+        plugins=['bhopstats', 'pad'],
         filegroups={
             '.': ['README.md', 'LICENSE'],
         },
