@@ -72,6 +72,14 @@ public void OnPluginStart()
 	gH_Forwards_OnJumpReleased = CreateGlobalForward("Bunnyhop_OnJumpReleased", ET_Event, Param_Cell, Param_Cell);
 	gH_Forwards_OnTouchGround = CreateGlobalForward("Bunnyhop_OnTouchGround", ET_Event, Param_Cell);
 	gH_Forwards_OnLeaveGround = CreateGlobalForward("Bunnyhop_OnLeaveGround", ET_Event, Param_Cell, Param_Cell, Param_Cell);
+
+	for(int i = 1; i <= MaxClients; i++)
+	{
+		if(IsClientConnected(i) && IsClientInGame(i))
+		{
+			OnClientPutInServer(i);
+		}
+	}
 }
 
 public void OnClientPutInServer(int client)
