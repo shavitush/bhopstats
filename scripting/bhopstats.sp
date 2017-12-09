@@ -20,6 +20,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdkhooks>
 #include <bhopstats>
 
 #pragma newdecls required
@@ -72,6 +73,14 @@ public void OnPluginStart()
 	gH_Forwards_OnJumpReleased = CreateGlobalForward("Bunnyhop_OnJumpReleased", ET_Event, Param_Cell, Param_Cell);
 	gH_Forwards_OnTouchGround = CreateGlobalForward("Bunnyhop_OnTouchGround", ET_Event, Param_Cell);
 	gH_Forwards_OnLeaveGround = CreateGlobalForward("Bunnyhop_OnLeaveGround", ET_Event, Param_Cell, Param_Cell, Param_Cell);
+
+	for(int i = 1; i <= MaxClients; i++)
+	{
+		if(IsClientConnected(i) && IsClientInGame(i))
+		{
+			OnClientPutInServer(i);
+		}
+	}
 }
 
 public void OnClientPutInServer(int client)
@@ -85,6 +94,8 @@ public void OnClientPutInServer(int client)
 
 	gI_Jumps[client] = 0;
 	gI_PerfectJumps[client] = 0;
+
+	SDKHook(client, SDKHook_PostThinkPost, PostThinkPost);
 }
 
 public int Native_GetScrollCount(Handle handler, int numParams)
@@ -117,13 +128,14 @@ public int Native_ResetPerfectJumps(Handle handler, int numParams)
 	gI_PerfectJumps[client] = 0;
 }
 
-public Action OnPlayerRunCmd(int client, int &buttons)
+public void PostThinkPost(int client)
 {
 	if(!IsPlayerAlive(client))
 	{
-		return Plugin_Continue;
+		return;
 	}
 
+	int buttons = GetClientButtons(client);
 	bool bOldOnGround = gB_OnGround[client];
 
 	int iGroundEntity = GetEntPropEnt(client, Prop_Send, "m_hGroundEntity");
@@ -182,6 +194,4 @@ public Action OnPlayerRunCmd(int client, int &buttons)
 	}
 
 	gI_Buttons[client] = buttons;
-
-	return Plugin_Continue;
 }
